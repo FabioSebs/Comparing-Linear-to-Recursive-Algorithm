@@ -4,7 +4,7 @@ let composite = 27
 let prime = 13
 
 
-//My Way
+//My Way O(n)
 let isPrime = (number) => {
 	let start = 2;
 	let range = [...Array(number).keys()]
@@ -18,8 +18,7 @@ let isPrime = (number) => {
 	return check
 }
 
-//Algorithm #4 
-
+//Algorithm #4 O(n)
 let isPrime2 = (number) => {
 	let factor = null
 
@@ -28,22 +27,22 @@ let isPrime2 = (number) => {
 	for (let i=2 ; i<= Math.floor(number/2); i++) {
 		number % i == 0 ? factor++ : null
 	}
+
 	if (factor === 2) {return true}
 	else {return false}
-
 }
 
 //Recursive Manner O(log(n))
-
 let isPrime3 = (number, i=2) => {
-	if (number === i){return true}
+	if (Math.floor(number/2) === i){return true}
 	if (number%i===0){return false}
 	return isPrime3(number, i+1)
 }
 
+
 let testAlgo = (algorithm,label) => {
 	return new Promise((res,rej)=>{
-		if (algorithm(prime) === true) {
+		if (algorithm(173) === true) {
 			console.time(label)
 			res(label)
 		}
@@ -52,26 +51,23 @@ let testAlgo = (algorithm,label) => {
 		}
 	})
 }
-//.056 O(n)
-/*
-testAlgo(isPrime, "My Algorithm")
-	.then((label)=>{console.timeEnd(label)})
-	.catch((msg)=>{console.log(msg)})
-*/
+//.148ms O(n)
 
-//.06 O(n)
+// testAlgo(isPrime, "My Algorithm")
+// 	.then((label)=>{console.timeEnd(label)})
+// 	.catch((msg)=>{console.log(msg)})
 
-/*
-testAlgo(isPrime2, "Algorithm #4")
-	.then((label)=>{console.timeEnd(label)})
-	.catch((msg)=>{console.log(msg)})
-*/
 
-//.055 O(logn)
-/*
+//.096ms O(n)
+// testAlgo(isPrime2, "Algorithm #4")
+// 	.then((label)=>{console.timeEnd(label)})
+// 	.catch((msg)=>{console.log(msg)})
+
+
+//.95ms O(logn)
 testAlgo(isPrime3, "Recursive Algorithm")
 	.then((label)=>{console.timeEnd(label)})
 	.catch((msg)=>{console.log(msg)})
-*/
+
 
 
