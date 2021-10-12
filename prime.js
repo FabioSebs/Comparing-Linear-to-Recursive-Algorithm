@@ -18,7 +18,7 @@ let isPrime = (number) => {
 	return check
 }
 
-//Algorithm #4 O(n)
+//Algorithm #4 O(n/2)
 let isPrime2 = (number) => {
 	let factor = null
 
@@ -32,7 +32,7 @@ let isPrime2 = (number) => {
 	else {return false}
 }
 
-//Recursive Manner O(log(n))
+//Recursive Manner O(n/2)
 let isPrime3 = (number, i=2) => {
 	if (Math.floor(number/2) === i){return true}
 	if (number%i===0){return false}
